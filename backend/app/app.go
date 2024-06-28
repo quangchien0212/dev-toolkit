@@ -45,3 +45,8 @@ func (a *App) Greet(name string) string {
 	helper.SLog(output)
 	return name
 }
+
+func (a *App) Ping() string {
+	helper.SLog("The client pinged me!")
+	return "The sever pong back"
+}

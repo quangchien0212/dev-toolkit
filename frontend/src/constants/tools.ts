@@ -1,4 +1,4 @@
-import { SquareDashedBottomCode } from "lucide-react"
+import { NotebookPen } from 'lucide-react';
 
 type TTool = {
   name: string
@@ -8,9 +8,9 @@ type TTool = {
 
 export const toolList: TTool[] = [
   {
-    name: 'JWT Decode',
-    icon: SquareDashedBottomCode,
-    path: '/jwt'
+    name: 'Notes',
+    icon: NotebookPen,
+    path: '/notes'
   }
 ]
 

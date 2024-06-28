@@ -52,7 +52,6 @@ import {
 import withPageLayout from "@/layouts/with-page-layout"
 
 function Dashboard() {
-  console.log('Dashboard')
 
   return (
     <>
