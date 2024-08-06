@@ -1,0 +1,5 @@
+node_modules
+services/.go
+services/.go-cache
+services/application_default_credentials.json
+.env

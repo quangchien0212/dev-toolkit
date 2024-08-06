@@ -1,0 +1,30 @@
+version: '3.8'
+name: 'dev-toolkit'
+services:
+  firestore:
+    build:
+      context: docker/firestore-emulator
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8787:8787"
+      - "127.0.0.1:4000:4000"
+      - "127.0.0.1:9099:9099"
+    restart: unless-stopped
+
+  http_server:
+    build:
+      context: docker/http-server
+    volumes:
+      - ./internal:/internal
+      - ./.go/pkg:/go/pkg
+      - ./.go-cache:/go-cache
+    working_dir: /internal/httpserver
+    environment:
+      GOCACHE: /go-cache
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:3001:$HTTP_PORT"
+    depends_on:
+      - firestore
