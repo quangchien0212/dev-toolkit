@@ -1,10 +1,12 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"os"
 
+	"cloud.google.com/go/firestore"
 	"github.com/go-chi/chi/v5"
 
 	"common/logs"
@@ -14,14 +16,14 @@ import (
 func main() {
 	logs.Init()
 
-	// ctx := context.Background()
-	// client, err := firestore.NewClient(ctx, "dev-toolkit")
+	ctx := context.Background()
+	client, err := firestore.NewClient(ctx, "dev-toolkit")
 
-	// if err != nil {
-	// 	panic(err)
-	// }
+	if err != nil {
+		panic(err)
+	}
 
-	// defer client.Close()
+	defer client.Close()
 
 	port := os.Getenv("HTTP_PORT")
 

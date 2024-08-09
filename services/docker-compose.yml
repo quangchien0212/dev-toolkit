@@ -13,8 +13,8 @@ services:
     restart: unless-stopped
 
   http_server:
-    build:
-      context: docker/http-server
+    build: docker/http-server
+    restart: always
     volumes:
       - ./internal:/internal
       - ./.go/pkg:/go/pkg
@@ -25,6 +25,6 @@ services:
     env_file:
       - .env
     ports:
-      - "127.0.0.1:3001:$HTTP_PORT"
+      - "127.0.0.1:$HTTP_PORT:$HTTP_PORT"
     depends_on:
       - firestore
